@@ -9,8 +9,8 @@ import urlparse
 import lxml.html
 
 # scrape_table function: gets passed an individual page to scrape
-def scrape_table(root):
-    rows = root.cssselect("table.data tr")  # selects all <tr> blocks within <table class="data">
+def scrape_table(jim):
+    rows = jim.cssselect("table.data tr")  # selects all <tr> blocks within <table class="data">
     for row in rows:
         # Set up our data record - we'll need it later
         record = {}
@@ -27,6 +27,7 @@ def scrape_table(root):
         
 # scrape_and_look_for_next_link function: calls the scrape_table
 # function, then hunts for a 'next' link: if one is found, calls itself again
+#url in this example is the parameter (general filling)- defining the parameter- can put startingurl here and will work. 
 def scrape_and_look_for_next_link(url):
     html = scraperwiki.scrape(url)
     print html
@@ -46,3 +47,4 @@ def scrape_and_look_for_next_link(url):
 base_url = 'https://paulbradshaw.github.io'
 starting_url = urlparse.urljoin(base_url, 'scraping-for-everyone/webpages/example_table_1.html')
 scrape_and_look_for_next_link(starting_url)
+#the starting url is the argument (specific filling) - defining the actual argument used in the function above. 
